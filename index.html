@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Capture Example</title>
+</head>
+<body>
+  <h1>Camera Capture Example</h1>
+  <button id="capture-btn">Capture Photo</button>
+  <input type="file" accept="image/*" capture="camera" id="camera-input" style="display: none;">
+  <img id="captured-image" alt="Captured Image" style="display: none; width: 300px;">
+
+  <script>
+    document.getElementById('capture-btn').addEventListener('click', () => {
+      document.getElementById('camera-input').click();
+    });
+
+    document.getElementById('camera-input').addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const img = document.getElementById('captured-image');
+        img.src = URL.createObjectURL(file);
+        img.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
